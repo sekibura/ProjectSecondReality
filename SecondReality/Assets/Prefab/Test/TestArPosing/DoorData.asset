@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a1ae7c2bc7763d408cb5a3539076253, type: 3}
-  m_Name: Test
+  m_Name: DoorData
   m_EditorClassIdentifier: 
-  Material: {fileID: 2100000, guid: 541e392b3d782fb438b4f70393135196, type: 2}
+  Material: {fileID: 0}
   Points: []
   DeltaFromQR:
-    XLeft: -1.1
-    XRight: 1.1
-    YTop: 1.713
-    YBottom: -2.6
-    Z: -0.2
-  WidthLine: 0.02
-  Number: 1337
-  DoorInfo: 135447
+    XLeft: 1
+    XRight: 1
+    YTop: 1
+    YBottom: 1
+    Z: 0
+  WidthLine: 0.1
+  Number: 228
+  DoorInfo: Hello
