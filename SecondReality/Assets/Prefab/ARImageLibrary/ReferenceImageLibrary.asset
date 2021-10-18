@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 4652111023134080772
+  m_GuidHigh: 16032269441792382855
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 5204499968529345399
+      m_GuidHigh: 13905729471153395365
+    m_SerializedTextureGuid:
+      m_GuidLow: 15935101930080500592
+      m_GuidHigh: 9760534755868070809
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: qrcode-logo_BW
+    m_Texture: {fileID: 2800000, guid: 1216fb70dac7dd2499d35e9da5627487, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5393218963062078339
+      m_GuidHigh: 6313076363345721242
+    m_SerializedTextureGuid:
+      m_GuidLow: 4770553285016669937
+      m_GuidHigh: 6096879810029534440
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: images (1)
+    m_Texture: {fileID: 2800000, guid: ef7dcef168ef4234e8bc0f73e2779c54, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5151846998301317529
+      m_GuidHigh: 17805875528496372387
+    m_SerializedTextureGuid:
+      m_GuidLow: 9864284363503251280
+      m_GuidHigh: 3386711776338734347
+    m_Size: {x: 0.2, y: 0.2}
+    m_SpecifySize: 1
+    m_Name: unnamed
+    m_Texture: {fileID: 2800000, guid: 8a0d2f50fa5d88e40b6d4dc16a04002f, type: 3}
