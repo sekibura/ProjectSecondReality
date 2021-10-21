@@ -12,10 +12,11 @@ public class BaseSettings : MonoBehaviour
 
     private void Awake()
     {
-         Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
 #if DEVELOPMENT_BUILD || UNITY_EDITOR
-      var fpsCounter = Instantiate(debugFPSCounter);
+        var fpsCounter = Instantiate(debugFPSCounter);
       DontDestroyOnLoad(fpsCounter);
 #endif
 

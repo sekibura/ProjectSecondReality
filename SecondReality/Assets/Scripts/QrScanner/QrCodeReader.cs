@@ -51,7 +51,7 @@ public class QrCodeReader : MonoBehaviour
                 var frame = _frameCapturer.Frames.Dequeue();
                 var height = _frameCapturer.AnalizedPictureHeight;
                 var width = _frameCapturer.AnalizedPictureWidth;
-                var data = barCodeReader.Decode(frame, width, height);
+                Result data = barCodeReader.Decode(frame, width, height);
                 if (data != null && ((_lastQR == data.Text && Time.time> _time) ||(_lastQR != data.Text)))
                 {
                     _lastQR = data.Text;
@@ -59,7 +59,20 @@ public class QrCodeReader : MonoBehaviour
                     _time = Time.time + _delayBetweenSameCode;
                     Vibration.VibratePop();
                     InvokeAct();
+                    Debug.Log("--------------------------");
                     Debug.Log("QR: " + data.Text);
+                    Debug.Log("Result points: ");
+                    foreach (var item in data.ResultPoints)
+                    {
+                        Debug.Log(item.X+"|"+ item.Y);
+                    }
+                    //data.ResultPoints.
+                    //Debug.Log("Meta: " + data.ResultMetadata.ToString());
+                    //foreach (var kvp in data.ResultMetadata)
+                    //{
+                    //    Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                    //}
+
                 }
             }
             catch (Exception e)

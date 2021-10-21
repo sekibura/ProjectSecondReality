@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartSceneWithBaseSettings.unity
     guid: 2154f8848d2e78349a1b3c593d2b6786
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TestScenes/QrScannerTestScene.unity
     guid: 56dde9414e12fbc499450208f570c8fa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestScenes/ARPosingByPicture.unity
     guid: 547040aa4f80ba4469c774d813c39a81
   m_configObjects:
