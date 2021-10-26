@@ -1,0 +1,3 @@
+91b92b771925483aa556c73e4713fbc0|Assets/Sprites/QRSamples/qrcode-logo_BW.png|0.1
+89373b8390124ad89af7221d818d9c57|Assets/Sprites/QRSamples/images (1).png|0.1
+381c397159dc49b2bbf3fb93e0ba0f2b|Assets/Sprites/QRSamples/unnamedWBjpg.jpg|0.15
