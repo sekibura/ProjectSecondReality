@@ -8,12 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartSceneWithBaseSettings.unity
     guid: 2154f8848d2e78349a1b3c593d2b6786
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestScenes/QrScannerTestScene.unity
     guid: 56dde9414e12fbc499450208f570c8fa
   - enabled: 0
-    path: Assets/Scenes/TestScenes/ARPosingByPicture.unity
+    path: Assets/Scenes/TestScenes/ARPictureTracking.unity
     guid: 547040aa4f80ba4469c774d813c39a81
+  - enabled: 1
+    path: Assets/Scenes/TestScenes/TestARObject/TestARObject.unity
+    guid: 6b5051dd269245041b321304b533c040
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f3669a25e08bea542b12b5e20b6991b7, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 955e6ef981cdb704c8fe18c756f0b2c0, type: 2}

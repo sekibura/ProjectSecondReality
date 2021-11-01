@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DecodedQRInfo
+public class QRInfo
 {
     //содержит декодированную инфу из qr кода
+    // http//rcrjkfr.com/hbjbhjb/1#0;0;0;0;0;0;1;1;1
+    private string url;
 
     /// <summary>
     /// «анимают 1,2,3 места в ссылке
@@ -24,5 +26,22 @@ public class DecodedQRInfo
     /// <summary>
     /// 0 место
     /// </summary>
-    public string URL { get; set; }
+    public string URL
+    {
+        get { return url; }
+        set 
+        { 
+            url = value;
+            //TODO
+            //        //переделать наименование 
+            var a = URL.Split('/');
+            ID = a[a.Length - 1];
+        }
+    }
+
+    /// <summary>
+    /// 0 место
+    /// </summary>
+    public string ID { get; private set; }
+
 }

@@ -11,11 +11,20 @@ public class QrCodeReader : MonoBehaviour
     private FrameCapturer _frameCapturer;
     private Animator _frameAnimator;
 
+
     [SerializeField]
-    private UnityEvent _eventsOnSuccess;
+    [Tooltip("Метод должен принимать параметр типа QRInfo")]
+    private UnityEvent<QRInfo> _eventsOnSuccess;
     [SerializeField]
     private bool _doOnce;
     private bool _isEventsDone = false;
+
+
+
+#if UNITY_EDITOR
+    public bool test;
+    public Texture2D QrCodeForTest;
+#endif
 
 
 
@@ -23,6 +32,7 @@ public class QrCodeReader : MonoBehaviour
     private float _delayBetweenSameCode = 2f;
 
     private string _lastQR = "";
+    Result frameDecodeData = null;
 
     void Start()
     {
@@ -51,21 +61,43 @@ public class QrCodeReader : MonoBehaviour
                 var frame = _frameCapturer.Frames.Dequeue();
                 var height = _frameCapturer.AnalizedPictureHeight;
                 var width = _frameCapturer.AnalizedPictureWidth;
-                Result data = barCodeReader.Decode(frame, width, height);
-                if (data != null && ((_lastQR == data.Text && Time.time> _time) ||(_lastQR != data.Text)))
+                frameDecodeData = null;
+#if UNITY_EDITOR
+                if (test)
                 {
-                    _lastQR = data.Text;
+                    frameDecodeData = barCodeReader.Decode(QrCodeForTest.GetPixels32(), QrCodeForTest.width, QrCodeForTest.height);
+                    test = false;
+                    Debug.Log("test!");
+                }
+                    
+#else
+    frameDecodeData = barCodeReader.Decode(frame, width, height);
+#endif
+                //Result data = barCodeReader.Decode(frame, width, height);
+
+                if (frameDecodeData != null && ((_lastQR == frameDecodeData.Text && Time.time> _time) ||(_lastQR != frameDecodeData.Text)))
+                {
+                    _lastQR = frameDecodeData.Text;
                     _frameAnimator.Play("Success");
                     _time = Time.time + _delayBetweenSameCode;
                     Vibration.VibratePop();
-                    InvokeAct();
+                    QRInfo qrInfo = new QRInfo();
+
+                    Debug.Log("before Decode");
+                    if (!QRInfoManager.Decode(frameDecodeData.Text, ref qrInfo))
+                        return;
+                    Debug.Log("After Decode");
+
+                    InvokeAct(qrInfo);
+
                     Debug.Log("--------------------------");
-                    Debug.Log("QR: " + data.Text);
+                    Debug.Log("QR: " + frameDecodeData.Text);
                     Debug.Log("Result points: ");
-                    foreach (var item in data.ResultPoints)
-                    {
-                        Debug.Log(item.X+"|"+ item.Y);
-                    }
+
+                    //foreach (var item in frameDecodeData.ResultPoints)
+                    //{
+                    //    Debug.Log(item.X+"|"+ item.Y);
+                    //}
                     //data.ResultPoints.
                     //Debug.Log("Meta: " + data.ResultMetadata.ToString());
                     //foreach (var kvp in data.ResultMetadata)
@@ -83,12 +115,12 @@ public class QrCodeReader : MonoBehaviour
         }
     }
 
-    private void InvokeAct()
+    private void InvokeAct(QRInfo qrInfo)
     {
         if (_eventsOnSuccess != null && !(_isEventsDone && _doOnce))
         {
             Debug.Log("Invoked");
-            _eventsOnSuccess?.Invoke();
+            _eventsOnSuccess?.Invoke(qrInfo);
         }
         _isEventsDone = true;
     }

@@ -16,32 +16,12 @@ MonoBehaviour:
   m_GuidHigh: 16032269441792382855
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 5204499968529345399
-      m_GuidHigh: 13905729471153395365
-    m_SerializedTextureGuid:
-      m_GuidLow: 15935101930080500592
-      m_GuidHigh: 9760534755868070809
-    m_Size: {x: 0.1, y: 0.1}
-    m_SpecifySize: 1
-    m_Name: qrcode-logo_BW
-    m_Texture: {fileID: 2800000, guid: 1216fb70dac7dd2499d35e9da5627487, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5393218963062078339
-      m_GuidHigh: 6313076363345721242
-    m_SerializedTextureGuid:
-      m_GuidLow: 4770553285016669937
-      m_GuidHigh: 6096879810029534440
-    m_Size: {x: 0.1, y: 0.1}
-    m_SpecifySize: 1
-    m_Name: images (1)
-    m_Texture: {fileID: 2800000, guid: ef7dcef168ef4234e8bc0f73e2779c54, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5310405712992287089
-      m_GuidHigh: 3102904141999764411
+      m_GuidLow: 4731694625508902136
+      m_GuidHigh: 2564175880281683606
     m_SerializedTextureGuid:
       m_GuidLow: 16741126406161093164
       m_GuidHigh: 10412414755482969608
-    m_Size: {x: 0.15, y: 0.15}
+    m_Size: {x: 0.2, y: 0.2}
     m_SpecifySize: 1
     m_Name: unnamedWBjpg
     m_Texture: {fileID: 2800000, guid: a324d22c6dc4e854082699820d548090, type: 3}
