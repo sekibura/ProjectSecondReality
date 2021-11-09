@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class BaseARObject : MonoBehaviour
@@ -50,7 +52,7 @@ public class BaseARObject : MonoBehaviour
     {
         try
         { 
-            assetsBundleLoader.DownloadBundle(DecodedQRInfo.URL, OnSuccess, OnFail, 0);
+            assetsBundleLoader.DownloadBundle(DecodedQRInfo, OnSuccess, OnFail, 0);
         }
         catch(Exception e)
         {
@@ -66,21 +68,49 @@ public class BaseARObject : MonoBehaviour
 
     IEnumerator LoadAssets(AssetBundle assetBundle)
     {
-        string pictureName = "qrCode";
-        string prefabName = "prefab";
+        //string pictureName = "qrCode";
+        //string prefabName = "prefab";
+        string imagePattern = @"^.*\.(jpg|JPG|png|PNG)$";
+        string prefabPattern = @"^.*\.(prefab)$";
 
-        //typeof(????)
-        var pictureRequest = assetBundle.LoadAssetAsync(pictureName, typeof(Texture2D));
-        QRCodeImage = pictureRequest.asset as Texture2D;
-        AddQRImageToLibrary(QRCodeImage);
-        yield return pictureRequest;
 
-        //typeof(????)
-        var prefabRequest = assetBundle.LoadAssetAsync(prefabName, typeof(GameObject));
-        GameObject prefabGameObject = prefabRequest.asset as GameObject;
-        SpawnARObject(prefabGameObject);
-        yield return prefabRequest;
+
+        //var pictureRequest = assetBundle.LoadAssetAsync(pictureName, typeof(Texture2D));
+        //QRCodeImage = pictureRequest.asset as Texture2D;
+        //AddQRImageToLibrary(QRCodeImage);
+        //yield return pictureRequest;
+
+
+        //var prefabRequest = assetBundle.LoadAssetAsync(prefabName, typeof(GameObject));
+        //GameObject prefabGameObject = prefabRequest.asset as GameObject;
+        //SpawnARObject(prefabGameObject);
+        //yield return prefabRequest;
+
+        foreach (var fileName in assetBundle.GetAllAssetNames())
+        {
+            if (Regex.Matches(fileName, imagePattern).Count > 0)
+            {
+                var pictureRequest = assetBundle.LoadAssetAsync(fileName, typeof(Texture2D));
+                yield return pictureRequest;
+                QRCodeImage = pictureRequest.asset as Texture2D;
+                AddQRImageToLibrary(QRCodeImage);
+                continue;
+            }
+            else if(Regex.Matches(fileName, prefabPattern).Count > 0)
+            {
+                var prefabRequest = assetBundle.LoadAssetAsync(fileName, typeof(GameObject));
+                yield return prefabRequest;
+                GameObject prefabGameObject = prefabRequest.asset as GameObject;
+                SpawnARObject(prefabGameObject);
+                continue;
+            }
+            else
+            {
+                Debug.LogError("Error asset load");
+            }
+        }
     }
+
 
     private void OnFail()
     {
@@ -101,11 +131,11 @@ public class BaseARObject : MonoBehaviour
 
     private void SpawnARObject(GameObject prefab)
     {
-        //remove 
-        _arPlugObject.SetActive(false);
-
         ARObject = (GameObject)Instantiate(prefab);
         ARObject.transform.parent = gameObject.transform;
+
+        //remove 
+        _arPlugObject.SetActive(false);
     }
 
 }

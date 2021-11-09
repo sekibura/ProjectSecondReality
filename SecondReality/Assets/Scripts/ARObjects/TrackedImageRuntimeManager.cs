@@ -83,10 +83,11 @@ public class TrackedImageRuntimeManager : MonoBehaviour
             //{
             //    jobLog.text = "Job Running...";
             //}
+            Debug.Log("Image adding to tracking library done!");
         }
         catch (Exception e)
         {
-            Debug.LogError(e.ToString());
+            Debug.LogError("Error adding image to tracking library" + e.ToString());
         }
     }
 

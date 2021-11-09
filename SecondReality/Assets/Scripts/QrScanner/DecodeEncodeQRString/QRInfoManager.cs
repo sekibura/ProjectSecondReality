@@ -18,19 +18,19 @@ public static class QRInfoManager
         {
             //TODO
             // придумать более изящную систему получения параметров из ссылки.
-            foreach (var item in parts)
-            {
-                Debug.Log(item);
-            }
+            //foreach (var item in parts)
+            //{
+            //    Debug.Log(item);
+            //}
 
             qrInfo.URL = parts[0];
-            Debug.Log("URL done");
+            //Debug.Log("URL done");
             qrInfo.StartPosition = new Vector3(float.Parse(parts[1]), float.Parse(parts[2]), float.Parse(parts[3]));
-            Debug.Log("StartPosition done");
+            //Debug.Log("StartPosition done");
             qrInfo.Offset = new Vector3(float.Parse(parts[4]), float.Parse(parts[5]), float.Parse(parts[6]));
-            Debug.Log("Offset done");
+            //Debug.Log("Offset done");
             qrInfo.Dimensions = new Vector3(float.Parse(parts[7]), float.Parse(parts[8]), float.Parse(parts[9]));
-            Debug.Log("Dimensions  done");
+            //Debug.Log("Dimensions  done");
 
             return true;
         }

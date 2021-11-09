@@ -21,4 +21,10 @@ public class CreateAssetsBundle
     {
         BuildPipeline.BuildAssetBundles("Assets/AssetBundles/Ios", BuildAssetBundleOptions.None, BuildTarget.iOS);
     }
+
+    [MenuItem("Assets/AssetBundles/Build AssetBundles WIN64")]
+    public static void BuildWin64AssetsBundle()
+    {
+        BuildPipeline.BuildAssetBundles("Assets/AssetBundles/WIN64", BuildAssetBundleOptions.None, BuildTarget.StandaloneWindows64);
+    }
 }
