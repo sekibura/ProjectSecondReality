@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using TMPro;
 
 public class BaseARObject : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class BaseARObject : MonoBehaviour
     private GameObject _arERRORPlugObject;
 
     AssetsBundleLoader assetsBundleLoader;
+    [SerializeField]
+    private TMP_Text text;
 
     private void Start()
     {
@@ -30,6 +33,7 @@ public class BaseARObject : MonoBehaviour
     public void Setup(QRInfo qrInfo)
     {
         DecodedQRInfo = qrInfo;
+        text.text = qrInfo.URL;
         Init();
         AssetBundleInit();
     }
@@ -109,6 +113,7 @@ public class BaseARObject : MonoBehaviour
                 Debug.LogError("Error asset load");
             }
         }
+        assetBundle.Unload(false);
     }
 
 

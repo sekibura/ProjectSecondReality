@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1377886674
+CRC: 1352217412
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: d38e64c06283c65b3a16ee8eb2b59c3a
+    Hash: faa82a8472c75119966bd1caf71d1278
   TypeTreeHash:
     serializedVersion: 2
     Hash: 6e935cad40e8d56faed9d589efbfe208
@@ -27,6 +27,6 @@ ClassTypes:
   Script: {instanceID: 0}
 SerializeReferenceClassIdentifiers: []
 Assets:
-- Assets/Sprites/QRSamples/mycode/mycodejpg.jpg
-- Assets/Prefab/Test/TestAssetBundleArObject/ArContentBundle.prefab
+- Assets/Sprites/QRSamples/mycode/mycode2jpg.jpg
+- Assets/Prefab/Test/TestAssetBundleArObject/ArContentBundle2.prefab
 Dependencies: []

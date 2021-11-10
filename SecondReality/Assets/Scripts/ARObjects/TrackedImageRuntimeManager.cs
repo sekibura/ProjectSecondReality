@@ -65,7 +65,7 @@ public class TrackedImageRuntimeManager : MonoBehaviour
         var firstGuid = new SerializableGuid(0, 0);
         var secondGuid = new SerializableGuid(0, 0);
 
-
+        
         XRReferenceImage newImage = new XRReferenceImage(firstGuid, secondGuid, new Vector2(0.1f, 0.1f), Guid.NewGuid().ToString(), texture2D);
 
         try

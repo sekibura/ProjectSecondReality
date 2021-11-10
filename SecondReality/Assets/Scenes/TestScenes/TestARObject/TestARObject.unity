@@ -412,6 +412,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: QRFrameViewer
       objectReference: {fileID: 0}
+    - target: {fileID: 8352862047558196751, guid: 843fdfceac19a7c45b569d9fe1b33824, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8352862047558196753, guid: 843fdfceac19a7c45b569d9fe1b33824, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 843fdfceac19a7c45b569d9fe1b33824, type: 3}
 --- !u!224 &1214983784 stripped
@@ -863,7 +871,7 @@ MonoBehaviour:
         m_CallState: 2
   _doOnce: 0
   test: 0
-  QrCodeForTest: {fileID: 2800000, guid: 4bae7db0704bfb64dae17c81c51d315c, type: 3}
+  QrCodeForTest: {fileID: 2800000, guid: 90a08a11edb44e0479dd73325377ea7d, type: 3}
 --- !u!114 &1989815080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,6 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f45aafa5402cbc4084c9a1f9860c61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _frameViewer: {fileID: 0}
   _frameViewerImage: {fileID: 1214983785}
   _searchWave: {fileID: 1342641910}
   _isSearchWaveEnable: 1

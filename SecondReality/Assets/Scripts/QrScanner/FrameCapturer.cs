@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FrameCapturer : MonoBehaviour
 {
 
-    public RecorderState State { get; private set; }
+    public RecorderState State { get; set; }
     private int _maxFrameCount = 5;
     private float _time;
     private float _timePerFrame;
@@ -22,8 +22,10 @@ public class FrameCapturer : MonoBehaviour
     private RenderTexture _rt;
     private DeviceOrientation _lastDeviceOrientation;
 
-    
+    [SerializeField]
+    private GameObject _frameViewer;
     public Image _frameViewerImage;
+
     [SerializeField]
     private SearchWaveScript _searchWave;
     [SerializeField]
@@ -68,14 +70,21 @@ public class FrameCapturer : MonoBehaviour
         if (State != RecorderState.Recording)
         {
             Graphics.Blit(source, destination);
-            if(_isSearchWaveEnable)
+            if (_isSearchWaveEnable)
+            {
                 _searchWave.CurrentState = SearchWaveScript.State.Paused;
+                _frameViewer.SetActive(false);
+            }
             return;
         }
         else
         {
             if (_isSearchWaveEnable)
+            {
                 _searchWave.CurrentState = SearchWaveScript.State.Play;
+                _frameViewer.SetActive(true);
+            }
+                
         }
 
         if (IsDeviceOrientationChanged())
@@ -190,6 +199,11 @@ public class FrameCapturer : MonoBehaviour
             return Screen.width / 3;
         else
             return Screen.height / 3;
+    }
+
+    public void EnableQRScanner()
+    {
+        State = RecorderState.Recording;
     }
 
 }

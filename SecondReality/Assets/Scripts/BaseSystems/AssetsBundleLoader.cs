@@ -38,6 +38,13 @@ public class AssetsBundleLoader : MonoBehaviour
         }
         Debug.Log("Bundle loading done!");
         AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(uwr);
+        if (bundle == null)
+        {
+            Debug.Log("Error GetContent! ");
+            onFailAction();
+            yield break;
+        }
+
         var names = bundle.GetAllAssetNames();
         foreach (var item in names)
         {
@@ -47,5 +54,7 @@ public class AssetsBundleLoader : MonoBehaviour
         //yield return loadAsset;
 
         onSuccesAction(bundle);
+        
+        
     }
 }

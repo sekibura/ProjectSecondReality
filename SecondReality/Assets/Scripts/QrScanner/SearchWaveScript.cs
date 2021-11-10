@@ -99,6 +99,10 @@ public class SearchWaveScript : MonoBehaviour
                 _coroutine = StartCoroutine(Vector3LerpCoroutine( _finishPosition, _speed));
                 _isCoroutineRunning = true;
             }
+            else if(value == State.Paused && _currentState != State.Paused)
+            {
+
+            }
             _currentState = value; 
         }
     }

@@ -32,13 +32,19 @@ public class ARObjectsManager : MonoBehaviour
 
     public void AddARObject(QRInfo qrInfo)
     {
-        Debug.Log("Add ARObject invoked");
-        if (qrInfo == null || trackedImageRuntimeManager == null)
-            return;
+       
         try
-        {   
+        {
+            Debug.Log("Add ARObject invoked");
+            if (qrInfo == null || trackedImageRuntimeManager == null)
+            {
+                Debug.Log("Empty qrInfo");
+                return;
+            }
+
             if (qrInfo.ID != _currentSpawnedQRinfo?.ID)
             {
+                Debug.Log("New ARObject");
                 if(_currentSpawnedGameobject!=null)
                     Destroy(_currentSpawnedGameobject);
 
@@ -49,7 +55,10 @@ public class ARObjectsManager : MonoBehaviour
                 baseArObject.Setup(qrInfo);
                 _currentSpawnedQRinfo = qrInfo;
                 trackedImageRuntimeManager.PrefabOnTrack = _currentSpawnedGameobject;
-                Debug.Log("ArObject spawned");
+            }
+            else
+            {
+                Debug.Log("Ar object already exist!");
             }
         }
         catch(Exception error)
