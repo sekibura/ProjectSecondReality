@@ -83,29 +83,11 @@ public class QrCodeReader : MonoBehaviour
                     Vibration.VibratePop();
                     QRInfo qrInfo = new QRInfo();
 
-                    //Debug.Log("before Decode");
                     if (!QRInfoManager.Decode(frameDecodeData.Text, ref qrInfo))
                         return;
-                   // Debug.Log("After Decode");
 
                     InvokeAct(qrInfo);
                     _frameCapturer.State = FrameCapturer.RecorderState.Paused;
-
-                    //Debug.Log("--------------------------");
-                   // Debug.Log("QR: " + frameDecodeData.Text);
-                    //Debug.Log("Result points: ");
-
-                    //foreach (var item in frameDecodeData.ResultPoints)
-                    //{
-                    //    Debug.Log(item.X+"|"+ item.Y);
-                    //}
-                    //data.ResultPoints.
-                    //Debug.Log("Meta: " + data.ResultMetadata.ToString());
-                    //foreach (var kvp in data.ResultMetadata)
-                    //{
-                    //    Console.WriteLine("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
-                    //}
-
                 }
             }
             catch (Exception e)

@@ -33,6 +33,10 @@ public class SearchWaveScript : MonoBehaviour
     {
         Init();
     }
+    private void OnEnable()
+    {
+        Init();
+    }
 
     public  void Init()
     {

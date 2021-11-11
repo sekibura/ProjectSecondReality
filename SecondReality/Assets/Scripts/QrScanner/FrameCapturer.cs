@@ -26,10 +26,15 @@ public class FrameCapturer : MonoBehaviour
     private GameObject _frameViewer;
     public Image _frameViewerImage;
 
+    //[SerializeField]
+    //private SearchWaveScript _searchWave;
+    //[SerializeField]
+    //private bool _isSearchWaveEnable;
     [SerializeField]
-    private SearchWaveScript _searchWave;
+    private GameObject _searchWave;
+
     [SerializeField]
-    private bool _isSearchWaveEnable;
+    private Button _qrBtn;
 
     //[SerializeField]
     //bool m_AutoAspect = false;
@@ -44,8 +49,7 @@ public class FrameCapturer : MonoBehaviour
     public enum RecorderState
     {
         Recording,
-        Paused,
-        PreProcessing
+        Paused
     }
   
     void Init()
@@ -67,25 +71,49 @@ public class FrameCapturer : MonoBehaviour
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        if (State != RecorderState.Recording)
+        //if (State != RecorderState.Recording)
+        //{
+        //    Graphics.Blit(source, destination);
+        //    if (_isSearchWaveEnable)
+        //    {
+        //        _searchWave.CurrentState = SearchWaveScript.State.Paused;
+        //        //_frameViewer.SetActive(false);
+        //    }
+        //    return;
+        //}
+        //else
+        //{
+        //    if (_isSearchWaveEnable)
+        //    {
+        //        _searchWave.CurrentState = SearchWaveScript.State.Play;
+        //        //_frameViewer.SetActive(true);
+        //    }
+
+        //}
+        if (State == RecorderState.Paused)
         {
             Graphics.Blit(source, destination);
-            if (_isSearchWaveEnable)
+            //ставим на паузу
+            if (_searchWave.activeSelf)
             {
-                _searchWave.CurrentState = SearchWaveScript.State.Paused;
-                _frameViewer.SetActive(false);
+                _searchWave.SetActive(false);
+                _frameViewer.GetComponent<Animator>().Play("QRScanerFrameSuccessDissapear");
+                _qrBtn.GetComponent<Animator>().Play("QrBtnAppear");
             }
-            return;
         }
+        //снимаем с паузы
         else
         {
-            if (_isSearchWaveEnable)
+            if (!_searchWave.activeSelf)
             {
-                _searchWave.CurrentState = SearchWaveScript.State.Play;
-                _frameViewer.SetActive(true);
+                _searchWave.SetActive(true);
+                _frameViewer.GetComponent<Animator>().Play("QRScanerFrameApear");
+                _qrBtn.GetComponent<Animator>().Play("QrBtnDisppear");
+                StartCoroutine(PreProcess());
             }
-                
         }
+
+
 
         if (IsDeviceOrientationChanged())
         {
