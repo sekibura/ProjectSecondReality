@@ -106,6 +106,8 @@ public class FrameCapturer : MonoBehaviour
         {
             if (!_searchWave.activeSelf)
             {
+                _frames.Clear();
+                Frames.Clear();
                 _searchWave.SetActive(true);
                 _frameViewer.GetComponent<Animator>().Play("QRScanerFrameApear");
                 _qrBtn.GetComponent<Animator>().Play("QrBtnDisppear");
@@ -229,9 +231,19 @@ public class FrameCapturer : MonoBehaviour
             return Screen.height / 3;
     }
 
-    public void EnableQRScanner()
+    public void EnableQRScanner(float delay)
     {
+
+        //State = RecorderState.Recording;
+        StartCoroutine(EnableQRScannerIenumerator(delay));
+    }
+
+    private IEnumerator EnableQRScannerIenumerator(float delay)
+    {
+
+        yield return new WaitForSecondsRealtime(delay);
         State = RecorderState.Recording;
+        
     }
 
 }
