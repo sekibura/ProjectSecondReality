@@ -10,6 +10,8 @@ public class BaseSettings : MonoBehaviour
     private GameObject _debugFPSCounter;
     private float _time;
     private bool _isAnimationFinished = false;
+    [SerializeField]
+    private bool _useFpsCounter;
 
 
     private void Awake()
@@ -18,8 +20,11 @@ public class BaseSettings : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
 #if DEVELOPMENT_BUILD || UNITY_EDITOR
-        var fpsCounter = Instantiate(_debugFPSCounter);
-      DontDestroyOnLoad(fpsCounter);
+        if (_useFpsCounter)
+        {
+            var fpsCounter = Instantiate(_debugFPSCounter);
+            DontDestroyOnLoad(fpsCounter);
+        }
 #endif
 
     }

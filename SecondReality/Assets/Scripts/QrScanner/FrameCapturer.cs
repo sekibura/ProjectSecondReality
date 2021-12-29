@@ -117,11 +117,11 @@ public class FrameCapturer : MonoBehaviour
 
 
 
-        if (IsDeviceOrientationChanged())
-        {
-            Init();
-            Debug.Log("DeviceWasRotated - " + Input.deviceOrientation.ToString());
-        }
+        //if (IsDeviceOrientationChanged())
+        //{
+        //    Init();
+        //    Debug.Log("DeviceWasRotated - " + Input.deviceOrientation.ToString());
+        //}
 
         _time += Time.unscaledDeltaTime;
 
