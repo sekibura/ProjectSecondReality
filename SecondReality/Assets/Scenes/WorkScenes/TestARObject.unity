@@ -2184,6 +2184,8 @@ GameObject:
   - component: {fileID: 2131880635}
   - component: {fileID: 2131880634}
   - component: {fileID: 2131880636}
+  - component: {fileID: 2131880637}
+  - component: {fileID: 2131880638}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: ARSessionOrigin
@@ -2234,3 +2236,29 @@ MonoBehaviour:
   scaleFactor: {x: 1, y: 1, z: 1}
   runtimeImageLibrary: {fileID: 11400000, guid: 8b355cc61bb06ae44a5c5506c7d2c741, type: 2}
   dynamicTexture: {fileID: 0}
+--- !u!114 &2131880637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131880633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa17d122634046b4a8e23048891fafc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RaycastPrefab: {fileID: 0}
+--- !u!114 &2131880638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2131880633}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab0e80cee9cc1d44928bfe488dd1e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PointCloudPrefab: {fileID: 1854016325464908, guid: 645310f3870f3d44486f68548441078b, type: 3}

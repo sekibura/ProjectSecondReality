@@ -123,7 +123,7 @@ public class BaseARObject : MonoBehaviour
         Debug.Log(gameObject.name + "Fail load bundle");
         _arPlugObject.SetActive(false);
 
-        _arERRORPlugObject = (GameObject)Instantiate(_arERRORPlugPrefab);
+        _arERRORPlugObject = (GameObject)Instantiate(_arERRORPlugPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
         _arERRORPlugObject.transform.parent = gameObject.transform;
 
     }
@@ -136,7 +136,7 @@ public class BaseARObject : MonoBehaviour
 
     private void SpawnARObject(GameObject prefab)
     {
-        ARObject = (GameObject)Instantiate(prefab);
+        ARObject = (GameObject)Instantiate(prefab, new Vector3(0f,0f,0f), Quaternion.identity);
         ARObject.transform.parent = gameObject.transform;
 
         //remove 

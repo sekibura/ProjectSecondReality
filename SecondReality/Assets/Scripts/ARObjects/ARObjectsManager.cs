@@ -2,16 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
+using UnityEngine.XR.ARSubsystems;
 
 public class ARObjectsManager : MonoBehaviour
 {
     private GameObject _currentSpawnedGameobject;
     private QRInfo _currentSpawnedQRinfo;
-    private TrackedImageRuntimeManager trackedImageRuntimeManager;
+    private TrackedImageRuntimeManager _trackedImageRuntimeManager;
     private GameObject _mainCamera;
+   
 
     [SerializeField]
     private GameObject _plugPrefab;
+    
+    static List<ARRaycastHit> _hits = new List<ARRaycastHit>();
+    private ARRaycastManager _arRaycastManager;
+    private ARSessionOrigin _arSessionOrigin;
 
     private void Start()
     {
@@ -21,22 +28,23 @@ public class ARObjectsManager : MonoBehaviour
 
     private void InitARSessionOrigin()
     {
-        var ARSession = GameObject.FindGameObjectWithTag("ARSessionOrigin");
+         GameObject ARSession = GameObject.FindGameObjectWithTag("ARSessionOrigin");
         if (ARSession == null)
         {
             Debug.LogError("ARSession not found!");
             return;
         }
-        trackedImageRuntimeManager = ARSession.GetComponent<TrackedImageRuntimeManager>();
+        _trackedImageRuntimeManager = ARSession.GetComponent<TrackedImageRuntimeManager>();
+        _arRaycastManager = ARSession.GetComponent<ARRaycastManager>();
+        _arSessionOrigin = ARSession.GetComponent<ARSessionOrigin>();
     }
 
     public void AddARObject(QRInfo qrInfo)
     {
-       
         try
         {
             Debug.Log("Add ARObject invoked");
-            if (qrInfo == null || trackedImageRuntimeManager == null)
+            if (qrInfo == null || _trackedImageRuntimeManager == null)
             {
                 Debug.Log("Empty qrInfo");
                 return;
@@ -47,19 +55,32 @@ public class ARObjectsManager : MonoBehaviour
                 Debug.Log("New ARObject");
                 if(_currentSpawnedGameobject!=null)
                     Destroy(_currentSpawnedGameobject);
+                var centerOfScreen = new Vector2(Screen.width/2, Screen.height/2);
+                var ray = _arSessionOrigin.camera.ScreenPointToRay(centerOfScreen);
+                if(_arRaycastManager.Raycast(ray, _hits, TrackableType.All))
+                {
+                    var hitPose = _hits[0].pose;
+                    _currentSpawnedGameobject = (GameObject)Instantiate(_plugPrefab, hitPose.position, hitPose.rotation);
+                }
+                else
+                {
+                    Debug.LogError("Wrong ARRaycst hit!");
+                    return;
+                }
 
-                _currentSpawnedGameobject = (GameObject)Instantiate(_plugPrefab, _mainCamera.transform.position, Quaternion.identity);
+               // _currentSpawnedGameobject = (GameObject)Instantiate(_plugPrefab, _mainCamera.transform.position, Quaternion.identity);
                 
                 var baseArObject = _currentSpawnedGameobject.GetComponent<BaseARObject>();
-                baseArObject.TrackedImageRuntimeManager = trackedImageRuntimeManager;
+                baseArObject.TrackedImageRuntimeManager = _trackedImageRuntimeManager;
                 baseArObject.Setup(qrInfo);
                 _currentSpawnedQRinfo = qrInfo;
-                trackedImageRuntimeManager.PrefabOnTrack = _currentSpawnedGameobject;
+                _trackedImageRuntimeManager.PrefabOnTrack = _currentSpawnedGameobject;
             }
             else
             {
                 Debug.Log("Ar object already exist!");
             }
+
         }
         catch(Exception error)
         {
