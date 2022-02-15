@@ -11,7 +11,7 @@ public class ViewManager : MonoBehaviour
     private View[] _views;
     private View _currentView;
     private readonly Stack<View> _history = new Stack<View>();
-    private void Awake() => Instance = this;
+    
 
     public static T GetView<T>() where T: View
     {
@@ -63,6 +63,20 @@ public class ViewManager : MonoBehaviour
         if(Instance._history.Count != 0)
         {
             Show(Instance._history.Pop(), false);
+        }
+    }
+
+    private void Awake() => Instance = this;
+    private void Start()
+    {
+        for (int i = 0; i < _views.Length; i++)
+        {
+            _views[i].Initialize();
+            _views[i].Hide();
+        }
+        if (_startingView != null)
+        {
+            Show(_startingView, true);
         }
     }
 }
