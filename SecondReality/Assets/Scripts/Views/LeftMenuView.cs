@@ -19,11 +19,14 @@ public class LeftMenuView : View
     [Header("Menu btns")]
     [SerializeField]
     private Button _aboutUsBtn;
+    [SerializeField]
+    private Button _settingsBtn;
 
     public override void Initialize()
     {
         _backgroundBtn.onClick.AddListener(() => ViewManager.ShowLast());
         _aboutUsBtn.onClick.AddListener(() => ViewManager.Show<AboutUsView>());
+        _settingsBtn.onClick.AddListener(()=>ViewManager.Show<SettingsView>());
         _x = _menuPanel.localPosition.x;
     }
 

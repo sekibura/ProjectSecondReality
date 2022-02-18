@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AboutUsView : View
+public class SettingsView : View
 {
     [SerializeField]
-    private Button _backBtn;
+    private Button _backBtn; 
     public override void Initialize()
     {
         _backBtn.onClick.AddListener(() => ViewManager.ShowLast());
     }
-
 }
