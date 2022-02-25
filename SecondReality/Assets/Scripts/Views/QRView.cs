@@ -11,4 +11,9 @@ public class QRView : View
     {
         _startQRScannerBtn.onClick.AddListener(() => ViewManager.Show<QRScannerView>());
     }
+    public override void Show()
+    {
+        base.Show();
+        Application.targetFrameRate = 360;
+    }
 }

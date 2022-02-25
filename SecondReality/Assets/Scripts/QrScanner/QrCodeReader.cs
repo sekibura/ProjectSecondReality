@@ -9,7 +9,7 @@ public class QrCodeReader : MonoBehaviour
     
     private BarcodeReader barCodeReader;
     private FrameCapturer _frameCapturer;
-    private Animator _frameAnimator;
+    //private Animator _frameAnimator;
 
 
     [SerializeField]
@@ -41,7 +41,7 @@ public class QrCodeReader : MonoBehaviour
         barCodeReader = new BarcodeReader();
         Resolution currentResolution = Screen.currentResolution;
         _frameCapturer = gameObject.GetComponent<FrameCapturer>();
-        _frameAnimator = _frameCapturer._frameViewerImage.GetComponent<Animator>();
+        //_frameAnimator = _frameCapturer._frameViewerImage.GetComponent<Animator>();
     }
 
     void Update()
@@ -78,7 +78,10 @@ public class QrCodeReader : MonoBehaviour
                 if (frameDecodeData != null && ((_lastQR == frameDecodeData.Text && Time.time> _time) ||(_lastQR != frameDecodeData.Text)))
                 {
                     _lastQR = frameDecodeData.Text;
-                    _frameAnimator.Play("Success");
+
+                    //_frameAnimator.Play("Success");
+                    QRStateManager.Instance.OnQRCodeReadSuccess();
+
                     _time = Time.time + _delayBetweenSameCode;
                     Vibration.VibratePop();
                     QRInfo qrInfo = new QRInfo();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,23 +23,26 @@ public class FrameCapturer : MonoBehaviour
     private RenderTexture _rt;
     private DeviceOrientation _lastDeviceOrientation;
 
-    [SerializeField]
-    private GameObject _frameViewer;
-    public Image _frameViewerImage;
+    //[SerializeField]
+    //private GameObject _frameViewer;
+    //public Image _frameViewerImage;
 
     //[SerializeField]
     //private SearchWaveScript _searchWave;
     //[SerializeField]
     //private bool _isSearchWaveEnable;
-    [SerializeField]
-    private GameObject _searchWave;
+    //[SerializeField]
+    //private GameObject _searchWave;
 
-    [SerializeField]
+    [SerializeField] 
     private Button _qrBtn;
 
     //[SerializeField]
     //bool m_AutoAspect = false;
- 
+
+    
+
+
 
     void Start()
     {
@@ -59,7 +63,8 @@ public class FrameCapturer : MonoBehaviour
         _frames = new Queue<RenderTexture>();
         AnalizedPictureWidth = AnalizedPictureHeight = CalculateSizeViewFrame();
         Debug.Log(Screen.currentResolution.ToString() + " " + AnalizedPictureWidth);
-        _frameViewerImage.GetComponent<RectTransform>().sizeDelta = new Vector2(AnalizedPictureWidth-100, AnalizedPictureHeight-100);
+        
+        //_frameViewerImage.GetComponent<RectTransform>().sizeDelta = new Vector2(AnalizedPictureWidth-100, AnalizedPictureHeight-100);
 
         
         //ComputeHeight();
@@ -94,25 +99,30 @@ public class FrameCapturer : MonoBehaviour
         {
             Graphics.Blit(source, destination);
             //ставим на паузу
-            if (_searchWave.activeSelf)
-            {
-                _searchWave.SetActive(false);
-                _frameViewer.GetComponent<Animator>().Play("QRScanerFrameSuccessDissapear");
+
+            //if (_searchWave.activeSelf)
+            //{
+                //_searchWave.SetActive(false);
+                //_frameViewer.GetComponent<Animator>().Play("QRScanerFrameSuccessDissapear");
                 _qrBtn.GetComponent<Animator>().Play("QrBtnAppear");
-            }
+            //}
+
+            QRStateManager.Instance.CapturePause();
         }
         //снимаем с паузы
         else
         {
-            if (!_searchWave.activeSelf)
-            {
+            //if (!_searchWave.activeSelf)
+            //{
                 _frames.Clear();
                 Frames.Clear();
-                _searchWave.SetActive(true);
-                _frameViewer.GetComponent<Animator>().Play("QRScanerFrameApear");
+                //_searchWave.SetActive(true);
+                //_frameViewer.GetComponent<Animator>().Play("QRScanerFrameApear");
                 _qrBtn.GetComponent<Animator>().Play("QrBtnDisppear");
                 StartCoroutine(PreProcess());
-            }
+            //}
+
+            QRStateManager.Instance.CaptureStart();
         }
 
 
@@ -246,4 +256,5 @@ public class FrameCapturer : MonoBehaviour
         
     }
 
+ 
 }
