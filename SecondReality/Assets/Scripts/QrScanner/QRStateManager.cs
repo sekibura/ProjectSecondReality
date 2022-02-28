@@ -30,4 +30,5 @@ public class QRStateManager : MonoBehaviour
         QRCodeReadSuccess?.Invoke();
     }
 
+
 }

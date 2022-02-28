@@ -15,4 +15,9 @@ public class QRScannerView : View
         _infoBtn.onClick.AddListener(() => ViewManager.Show<QRScannerInfoView>());
 
     }
+
+    public override void Show()
+    {
+        base.Show();
+    }
 }

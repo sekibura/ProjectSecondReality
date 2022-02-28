@@ -3,34 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SearchWaveScript : MonoBehaviour
+public class QrScannerBottomBar : MonoBehaviour
 {
+    [SerializeField]
+    private Button _qrButton;
 
     [SerializeField]
-    private GameObject _wave;
+    private GameObject _buttons;
 
     private void Start()
     {
-        //FrameCapturer frameCapturer = FindObjectOfType<FrameCapturer>();
         QRStateManager.Instance.captureStart += CaptureStart;
         QRStateManager.Instance.capturePause += CapturePause;
         QRStateManager.Instance.QRCodeReadSuccess += QRReadedSuccess;
-        _wave.SetActive(true);
+
+        _qrButton.onClick.AddListener(()=> { PressQRButton(); });
+        _buttons.SetActive(false);
     }
 
     private void CaptureStart()
     {
-        _wave.SetActive(true);
+        _buttons.SetActive(false);
     }
 
     private void CapturePause()
     {
-        _wave.SetActive(false);
+
     }
 
     private void QRReadedSuccess()
     {
-        _wave.SetActive(false);
+        _buttons.SetActive(true);
     }
 
+    private void PressQRButton()
+    {
+        QRStateManager.Instance.CaptureStart();
+    }
 }
