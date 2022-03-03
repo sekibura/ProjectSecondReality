@@ -6,6 +6,7 @@ using UnityEngine.XR.ARSubsystems;
 
 public class TrackedImageRuntimeManager : MonoBehaviour
 {
+    [SerializeField]
     private GameObject prefabOnTrack;
     public GameObject PrefabOnTrack 
     { 
@@ -22,13 +23,10 @@ public class TrackedImageRuntimeManager : MonoBehaviour
     [SerializeField]
     private Vector3 scaleFactor = new Vector3(1f, 1f, 1f);
 
-    [SerializeField]
+    //[SerializeField]
     private XRReferenceImageLibrary runtimeImageLibrary;
 
     private ARTrackedImageManager trackImageManager;
-
-    [SerializeField]
-    private Texture2D dynamicTexture;
 
     private void Start()
     {
@@ -36,23 +34,28 @@ public class TrackedImageRuntimeManager : MonoBehaviour
         trackImageManager.referenceLibrary = trackImageManager.CreateRuntimeLibrary(runtimeImageLibrary);
         trackImageManager.requestedMaxNumberOfMovingImages = 1;
         trackImageManager.trackedImagePrefab = prefabOnTrack;
-
         trackImageManager.enabled = true;
-
-        //trackImageManager.trackedImagesChanged += OnTrackedImagesChanged;
-
+        trackImageManager.trackedImagesChanged += OnTrackedImagesChanged;
     }
 
   
     void OnDisable()
     {
-       // trackImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
+       trackImageManager.trackedImagesChanged -= OnTrackedImagesChanged;
     }
 
-    public void AddImage(Texture2D texture2D)
+    public void AddImage(Texture2D texture2D, GameObject prefabOnTrack = null)
     {
+        if (prefabOnTrack != null)
+        {
+            this.prefabOnTrack = prefabOnTrack;
+            trackImageManager.trackedImagePrefab = prefabOnTrack;
+        }
+            
         StartCoroutine(AddImageJob(texture2D));
     }
+
+
 
     private IEnumerator AddImageJob(Texture2D texture2D)
     {
@@ -75,14 +78,16 @@ public class TrackedImageRuntimeManager : MonoBehaviour
             // MutableRuntimeReferenceImageLibrary - может давать проблемы на каких-то устройствах.
             MutableRuntimeReferenceImageLibrary mutableRuntimeReferenceImageLibrary = trackImageManager.referenceLibrary as MutableRuntimeReferenceImageLibrary;
 
-      
 
+
+            
             var jobHandle = mutableRuntimeReferenceImageLibrary.ScheduleAddImageJob(texture2D, Guid.NewGuid().ToString(), 0.1f);
 
-            //while (!jobHandle.IsCompleted)
-            //{
-            //    jobLog.text = "Job Running...";
-            //}
+
+            while (!jobHandle.IsCompleted)
+            {
+                Debug.Log("Job Running...");
+            }
             Debug.Log("Image adding to tracking library done!");
         }
         catch (Exception e)

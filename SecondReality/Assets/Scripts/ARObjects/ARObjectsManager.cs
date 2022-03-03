@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using ZXing;
 
 public class ARObjectsManager : MonoBehaviour
 {
     private GameObject _currentSpawnedGameobject;
-    private QRInfo _currentSpawnedQRinfo;
-    private TrackedImageRuntimeManager _trackedImageRuntimeManager;
-    private GameObject _mainCamera;
+    private QrInfoSubstitution _currentSpawnedQRinfo;
+    
    
 
+    //префаб для спавна
     [SerializeField]
     private GameObject _plugPrefab;
     
@@ -22,7 +23,6 @@ public class ARObjectsManager : MonoBehaviour
 
     private void Start()
     {
-        _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         InitARSessionOrigin();
     }
 
@@ -34,17 +34,16 @@ public class ARObjectsManager : MonoBehaviour
             Debug.LogError("ARSession not found!");
             return;
         }
-        _trackedImageRuntimeManager = ARSession.GetComponent<TrackedImageRuntimeManager>();
         _arRaycastManager = ARSession.GetComponent<ARRaycastManager>();
         _arSessionOrigin = ARSession.GetComponent<ARSessionOrigin>();
     }
 
-    public void AddARObject(QRInfo qrInfo)
+    public void AddARObject(QrInfoSubstitution qrInfo)
     {
         try
         {
-            Debug.Log("Add ARObject invoked");
-            if (qrInfo == null || _trackedImageRuntimeManager == null)
+            Debug.Log("Add ARObject");
+            if (qrInfo == null)
             {
                 Debug.Log("Empty qrInfo");
                 return;
@@ -53,28 +52,29 @@ public class ARObjectsManager : MonoBehaviour
             if (qrInfo.ID != _currentSpawnedQRinfo?.ID)
             {
                 Debug.Log("New ARObject");
+
                 if(_currentSpawnedGameobject!=null)
                     Destroy(_currentSpawnedGameobject);
-                var centerOfScreen = new Vector2(Screen.width/2, Screen.height/2);
-                var ray = _arSessionOrigin.camera.ScreenPointToRay(centerOfScreen);
-                if(_arRaycastManager.Raycast(ray, _hits, TrackableType.All))
-                {
-                    var hitPose = _hits[0].pose;
-                    _currentSpawnedGameobject = (GameObject)Instantiate(_plugPrefab, hitPose.position, hitPose.rotation);
-                }
-                else
-                {
-                    Debug.LogError("Wrong ARRaycst hit!");
-                    return;
-                }
 
-               // _currentSpawnedGameobject = (GameObject)Instantiate(_plugPrefab, _mainCamera.transform.position, Quaternion.identity);
+                //var centerOfScreen = new Vector2(Screen.width/2, Screen.height/2);
+                //var ray = _arSessionOrigin.camera.ScreenPointToRay(centerOfScreen);
+
+                ////заменить на нормальный рейкаст по координатам qr-кода
+                //if(_arRaycastManager.Raycast(ray, _hits, TrackableType.All))
+                //{
+                //    var hitPose = _hits[0].pose;
+                //    _currentSpawnedGameobject = (GameObject)Instantiate(_plugPrefab, hitPose.position, hitPose.rotation);
+                //}
+                //else
+                //{
+                //    Debug.LogError("Wrong ARRaycst hit!");
+                //    return;
+                //}
+
                 
                 var baseArObject = _currentSpawnedGameobject.GetComponent<BaseARObject>();
-                baseArObject.TrackedImageRuntimeManager = _trackedImageRuntimeManager;
                 baseArObject.Setup(qrInfo);
                 _currentSpawnedQRinfo = qrInfo;
-                _trackedImageRuntimeManager.PrefabOnTrack = _currentSpawnedGameobject;
             }
             else
             {

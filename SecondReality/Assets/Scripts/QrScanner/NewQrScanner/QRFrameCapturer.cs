@@ -30,7 +30,7 @@ public class QRFrameCapturer : MonoBehaviour
 
     //private Texture2D m_CameraTexture;
     private Texture2D m_Texture;
-    private bool onlyonce = false;
+    //private bool onlyonce = false;
     //private bool doOnce=false;
     private BarcodeReader barCodeReader;
     private ARRaycastManager arRaycastManager;
@@ -43,11 +43,21 @@ public class QRFrameCapturer : MonoBehaviour
 
     private bool _toScan = true;
 
+    #region imageTracking
+    private TrackedImageRuntimeManager _trackedImageRuntimeManager;
+    [SerializeField]
+    private Texture2D _imageForTracking;
+    #endregion
+
+
+
     private void Start()
     {
         //InitRect();
         Vibration.Init();
         barCodeReader = new BarcodeReader();
+        arRaycastManager = FindObjectOfType<ARRaycastManager>();
+        _trackedImageRuntimeManager = FindObjectOfType<TrackedImageRuntimeManager>();
 
         QRStateManager.Instance.captureStart += CaptureStart;
         QRStateManager.Instance.capturePause += CapturePause;
@@ -110,7 +120,8 @@ public class QRFrameCapturer : MonoBehaviour
             inputRect = new RectInt(0, 0, image.width, image.height),
 
             // Downsample by 2
-            outputDimensions = new Vector2Int(image.width / 2, image.height / 2),
+            //outputDimensions = new Vector2Int(image.width / 2, image.height / 2),
+            outputDimensions = new Vector2Int(image.width, image.height),
 
             // Color image format
             outputFormat = TextureFormat.RGB24,
@@ -142,6 +153,7 @@ public class QRFrameCapturer : MonoBehaviour
                 request.conversionParams.outputDimensions.y,
                 request.conversionParams.outputFormat,
                 false);
+            Debug.Log("m_Texture="+ m_Texture.width+"x"+ m_Texture.height);
         }
 
         // Copy the image data into the texture
@@ -156,19 +168,21 @@ public class QRFrameCapturer : MonoBehaviour
         Result decodedInfo = barCodeReader.Decode(source);
         if (decodedInfo != null && decodedInfo.Text != "")
         {
-            QRStateManager.Instance.OnQRCodeReadSuccess();    
             string QRContents = decodedInfo.Text;
-            Debug.Log(QRContents);
-
+            
             var resultComparing = ProcessQRCode(QRContents);
             if(resultComparing != null)
             {
-                Vibration.VibratePop();
-                DoAfterReadRightCode();
+                Debug.Log("Right QRCode: " + resultComparing.ToString());
+                //Vibration.VibratePop();
+                QRStateManager.Instance.OnQRCodeReadSuccess();
+
+                DoAfterReadRightCode(resultComparing, decodedInfo);
             }
             else
             {
                 //ignore this qrCode
+                Debug.LogWarning("Wrong QRCode: " + QRContents);
             }
            
             
@@ -219,21 +233,64 @@ public class QRFrameCapturer : MonoBehaviour
     //}
 
     
-    private bool ProcessQRCode(string result)
+    private QrInfoSubstitution ProcessQRCode(string result)
     {
-        return true;
+        QrInfoSubstitution qrInfoSubstitution;
+        try
+        {
+            qrInfoSubstitution = JsonUtility.FromJson<QrInfoSubstitution>(result);
+        }
+        catch { return null; }
+        return qrInfoSubstitution;
     }
 
-    private void DoAfterReadRightCode()
+    private void DoAfterReadRightCode(QrInfoSubstitution qrInfoSubstitution, Result result)
+    {
+        AddImageTrackingTest();
+    }
+
+    /// <summary>
+    /// Спавнит объект поверх QR-кода, без учета его поворота
+    /// </summary>
+    /// <param name="decodedInfo"></param>
+    private void SpawnObjectTest(Result decodedInfo)
     {
 
+        ResultPoint[] resultPoints = decodedInfo.ResultPoints;
+        ResultPoint a = resultPoints[1];
+        ResultPoint b = resultPoints[2];
+        ResultPoint c = resultPoints[0];
+        Vector2 pos4 = Translate(new Vector2(((float)c.Y + (float)a.Y) / 2.0f, ((float)b.X + (float)a.X) / 2.0f), new Vector2(m_Texture.height, m_Texture.width), new Vector2(Screen.width, Screen.height));
+        
+        List<ARRaycastHit> aRRaycastHits = new List<ARRaycastHit>();
+
+        if (arRaycastManager.Raycast(new Vector2(Screen.width-pos4.x, Screen.height - pos4.y), aRRaycastHits, TrackableType.FeaturePoint) && aRRaycastHits.Count > 0)
+        {
+            Debug.Log("Instantiate");
+            GameObject NewObjectToPlace = Instantiate(_arObjectOnQRCode, aRRaycastHits[0].pose.position, Quaternion.identity);
+            Vibration.VibrateNope();
+        }
+        else
+        {
+            Debug.Log(arRaycastManager.Raycast(new Vector2(pos4.x, pos4.y), aRRaycastHits, TrackableType.FeaturePoint)+"||||"+ aRRaycastHits.Count);
+        }
+    }
+
+    private void AddImageTrackingTest()
+    {
+        _trackedImageRuntimeManager.AddImage(_imageForTracking);
+    }
+
+    private static Vector2 Translate(Vector2 point, Vector2 from, Vector2 to)
+    {
+        Debug.Log("Translate: " + point + " from: " + from + " to:" + to + "=" + new Vector2((point.x * to.x) / from.x, (point.y * to.y) / from.y));
+        return new Vector2((point.x * to.x) / from.x, (point.y * to.y) / from.y);
     }
 
     private void CaptureStart()
     {
         _toScan = true;
     }
-
     private void CapturePause()
     {
         _toScan = false;

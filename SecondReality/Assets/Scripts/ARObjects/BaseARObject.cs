@@ -8,10 +8,10 @@ using TMPro;
 
 public class BaseARObject : MonoBehaviour
 {
-    public QRInfo DecodedQRInfo { get; private set; }
+    public QrInfoSubstitution DecodedQRInfo { get; private set; }
     public Texture2D QRCodeImage { get; private set; }
     public GameObject ARObject { get; private set; }
-    public TrackedImageRuntimeManager TrackedImageRuntimeManager { get; set; }
+    private TrackedImageRuntimeManager _trackedImageRuntimeManager;
 
     [SerializeField]
     private GameObject _arPlugPrefab;
@@ -28,12 +28,13 @@ public class BaseARObject : MonoBehaviour
     private void Start()
     {
         Debug.Log(name + " created!\n"+transform.position);
+        
     }
 
-    public void Setup(QRInfo qrInfo)
+    public void Setup(QrInfoSubstitution qrInfo)
     {
         DecodedQRInfo = qrInfo;
-        text.text = qrInfo.URL;
+        text.text = qrInfo.url;
         Init();
         AssetBundleInit();
     }
@@ -50,6 +51,9 @@ public class BaseARObject : MonoBehaviour
         _arPlugObject = (GameObject)Instantiate(_arPlugPrefab);
         _arPlugObject.transform.parent = gameObject.transform;
         assetsBundleLoader = gameObject.AddComponent<AssetsBundleLoader>();
+
+        _trackedImageRuntimeManager = FindObjectOfType<TrackedImageRuntimeManager>();
+        _trackedImageRuntimeManager.PrefabOnTrack = gameObject;
     }
 
     private void AssetBundleInit()
@@ -131,7 +135,7 @@ public class BaseARObject : MonoBehaviour
     private void AddQRImageToLibrary(Texture2D QRImage)
     {
         // 
-        TrackedImageRuntimeManager.AddImage(QRImage);
+        _trackedImageRuntimeManager.AddImage(QRImage);
     }
 
     private void SpawnARObject(GameObject prefab)

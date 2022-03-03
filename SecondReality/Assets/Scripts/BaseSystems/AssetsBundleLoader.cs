@@ -9,12 +9,12 @@ public class AssetsBundleLoader : MonoBehaviour
     //использовать ли локальные пути
     private bool useLocalPaths = true;
 
-    public void DownloadBundle(QRInfo qrInfo, Action<AssetBundle> onSuccesAction, Action onFailAction, int ver = 0)
+    public void DownloadBundle(QrInfoSubstitution qrInfo, Action<AssetBundle> onSuccesAction, Action onFailAction, int ver = 0)
     {
         StartCoroutine(DownloadAndCache(qrInfo, ver, onSuccesAction, onFailAction));
     }
 
-    IEnumerator DownloadAndCache(QRInfo qrInfo, int ver, Action<AssetBundle> onSuccesAction, Action onFailAction)
+    IEnumerator DownloadAndCache(QrInfoSubstitution qrInfo, int ver, Action<AssetBundle> onSuccesAction, Action onFailAction)
     {
         Debug.Log("start download bundle");
 
@@ -22,10 +22,10 @@ public class AssetsBundleLoader : MonoBehaviour
         while (!Caching.ready)
             yield return null;
 
-        string url = qrInfo.URL;
+        string url = qrInfo.url;
 
         if (useLocalPaths)
-            url = LocalBundlePath.GetLocalPath(qrInfo.ID);
+            url = LocalBundlePath.GetLocalPath(qrInfo.ID.ToString());
 
         var uwr = UnityWebRequestAssetBundle.GetAssetBundle(url);
         yield return uwr.SendWebRequest();

@@ -16,12 +16,12 @@ MonoBehaviour:
   m_GuidHigh: 16032269441792382855
   m_Images:
   - m_SerializedGuid:
-      m_GuidLow: 4731694625508902136
-      m_GuidHigh: 2564175880281683606
+      m_GuidLow: 5438482644345559611
+      m_GuidHigh: 911380123813832874
     m_SerializedTextureGuid:
       m_GuidLow: 16741126406161093164
       m_GuidHigh: 10412414755482969608
-    m_Size: {x: 0.2, y: 0.2}
-    m_SpecifySize: 1
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
     m_Name: unnamedWBjpg
-    m_Texture: {fileID: 2800000, guid: a324d22c6dc4e854082699820d548090, type: 3}
+    m_Texture: {fileID: 0}
