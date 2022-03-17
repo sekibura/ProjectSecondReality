@@ -135,7 +135,7 @@ public class BaseARObject : MonoBehaviour
     private void AddQRImageToLibrary(Texture2D QRImage)
     {
         // 
-        _trackedImageRuntimeManager.AddImage(QRImage);
+        _trackedImageRuntimeManager.NewTracking(QRImage);
     }
 
     private void SpawnARObject(GameObject prefab)

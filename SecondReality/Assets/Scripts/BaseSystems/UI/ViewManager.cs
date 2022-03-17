@@ -25,7 +25,7 @@ public class ViewManager : MonoBehaviour
         return null;
     }
 
-    public static void Show<T>(bool remember = true, bool hideLast = true) where T: View
+    public static void Show<T>(object parameter = null, bool remember = true, bool hideLast = true) where T: View
     {
         for (int i = 0; i < Instance._views.Length; i++)
         {
@@ -43,7 +43,7 @@ public class ViewManager : MonoBehaviour
                     }
                     
                 }
-                Instance._views[i].Show();
+                Instance._views[i].Show(parameter);
                 Instance._currentView = Instance._views[i];
             }
         }

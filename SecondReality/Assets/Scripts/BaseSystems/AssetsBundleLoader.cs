@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 public class AssetsBundleLoader : MonoBehaviour
 {
     //использовать ли локальные пути
-    private bool useLocalPaths = true;
+    private bool useLocalPaths = false;
 
     public void DownloadBundle(QrInfoSubstitution qrInfo, Action<AssetBundle> onSuccesAction, Action onFailAction, int ver = 0)
     {

@@ -43,21 +43,23 @@ public class QRFrameCapturer : MonoBehaviour
 
     private bool _toScan = true;
 
-    #region imageTracking
-    private TrackedImageRuntimeManager _trackedImageRuntimeManager;
-    [SerializeField]
-    private Texture2D _imageForTracking;
-    #endregion
+    //#region imageTracking
+    //private TrackedImageRuntimeManager _trackedImageRuntimeManager;
+    //[SerializeField]
+    //private Texture2D _imageForTracking;
+    //#endregion
 
+    private ARObjectManagerNew _arObjectManagerNew;
 
-
+    private bool _initDone = false;
     private void Start()
     {
         //InitRect();
         Vibration.Init();
         barCodeReader = new BarcodeReader();
         arRaycastManager = FindObjectOfType<ARRaycastManager>();
-        _trackedImageRuntimeManager = FindObjectOfType<TrackedImageRuntimeManager>();
+        _arObjectManagerNew = FindObjectOfType<ARObjectManagerNew>();
+        //_trackedImageRuntimeManager = FindObjectOfType<TrackedImageRuntimeManager>();
 
         QRStateManager.Instance.captureStart += CaptureStart;
         QRStateManager.Instance.capturePause += CapturePause;
@@ -88,7 +90,15 @@ public class QRFrameCapturer : MonoBehaviour
 
     void OnCameraFrameReceived(ARCameraFrameEventArgs eventArgs)
     {
-        if(_toScan)
+        if (!_initDone)
+        {
+            int num = cameraManager.GetConfigurations(Allocator.Temp).Length - 1;
+            cameraManager.subsystem.currentConfiguration = cameraManager.GetConfigurations(Allocator.Temp)[num]; //set max resolution
+            _initDone = true;
+        }
+        
+
+        if (_toScan)
             ReadQR();
     }
 
@@ -246,7 +256,10 @@ public class QRFrameCapturer : MonoBehaviour
 
     private void DoAfterReadRightCode(QrInfoSubstitution qrInfoSubstitution, Result result)
     {
-        AddImageTrackingTest();
+
+        ViewManager.Show<LoadingScreenView>(hideLast: false);
+
+        _arObjectManagerNew.LoadContent(qrInfoSubstitution);
     }
 
     /// <summary>
@@ -278,7 +291,7 @@ public class QRFrameCapturer : MonoBehaviour
 
     private void AddImageTrackingTest()
     {
-        _trackedImageRuntimeManager.AddImage(_imageForTracking);
+        //_trackedImageRuntimeManager.NewTracking(_imageForTracking);
     }
 
     private static Vector2 Translate(Vector2 point, Vector2 from, Vector2 to)

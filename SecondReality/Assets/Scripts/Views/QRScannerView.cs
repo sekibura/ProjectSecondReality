@@ -16,7 +16,7 @@ public class QRScannerView : View
 
     }
 
-    public override void Show()
+    public override void Show(object parameter = null)
     {
         base.Show();
     }

@@ -30,7 +30,7 @@ public class LeftMenuView : View
         _x = _menuPanel.localPosition.x;
     }
 
-    public override void Show()
+    public override void Show(object parameter = null)
     {
         base.Show();
         _background.interactable = true;
