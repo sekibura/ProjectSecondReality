@@ -13,7 +13,8 @@ public class MessageView : View
 
     public override void Initialize()
     {
-        Vibration.Init();
+
+        //Vibration.Init();
         _button.onClick.AddListener(()=> { ViewManager.ShowLast(); });
     }
 
