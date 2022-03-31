@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/WorkScenes/MainScene.unity
     guid: 6b5051dd269245041b321304b533c040
   - enabled: 1
-    path: Assets/Scenes/TestScenes/UI_Prototype.unity
+    path: Assets/Scenes/WorkScenes/NewScenes/Menu.unity
     guid: bab6efe8822f3da489d0134686e093ad
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: f3669a25e08bea542b12b5e20b6991b7, type: 2}

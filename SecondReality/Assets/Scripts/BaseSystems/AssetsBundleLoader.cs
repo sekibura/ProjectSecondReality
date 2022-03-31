@@ -28,6 +28,9 @@ public class AssetsBundleLoader : MonoBehaviour
             url = LocalBundlePath.GetLocalPath(qrInfo.ID.ToString());
 
         var uwr = UnityWebRequestAssetBundle.GetAssetBundle(url);
+
+
+
         yield return uwr.SendWebRequest();
 
         if (!string.IsNullOrEmpty(uwr.error))
@@ -37,6 +40,7 @@ public class AssetsBundleLoader : MonoBehaviour
             yield break;
         }
         Debug.Log("Bundle loading done!");
+
         AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(uwr);
         if (bundle == null)
         {

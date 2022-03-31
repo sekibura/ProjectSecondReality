@@ -1,0 +1,86 @@
+# Blender MTL File: 'PLACA.blend11'
+# Material Count: 9
+
+newmtl Material
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd placa-painel-microondas-panasonic-nn-st354-st364-st654-st674-D_NQ_NP_297421-MLB20790021935_062016-F (cópia).jpg
+
+newmtl Material_placa-painel-microondas-panasonic-nn-st354-st364-st654-st674-D_
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.640000 0.640000 0.640000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+map_Kd placa-painel-microondas-panasonic-nn-st354-st364-st654-st674-D_NQ_NP_297421-MLB20790021935_062016-F.jpg
+
+newmtl None
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd placa-painel-microondas-panasonic-nn-st354-st364-st654-st674-D_NQ_NP_297421-MLB20790021935_062016-F.jpg
+
+newmtl None_NONE
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+
+newmtl None_download.jpeg
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd download.jpeg
+
+newmtl None_images.jpeg
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd images.jpeg
+
+newmtl None_images_(1).jpeg
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd images (1).jpeg
+
+newmtl None_mur460_1.jpg
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd mur460_1.jpg
+
+newmtl None_resistencia.jpg
+Ns 0
+Ka 0.000000 0.000000 0.000000
+Kd 0.8 0.8 0.8
+Ks 0.8 0.8 0.8
+d 1
+illum 2
+map_Kd resistencia.jpg

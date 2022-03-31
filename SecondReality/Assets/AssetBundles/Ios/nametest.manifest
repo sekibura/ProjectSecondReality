@@ -1,0 +1,41 @@
+ManifestFileVersion: 0
+CRC: 3916618357
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 63b6bc81749d98846afb3c522d908404
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: eba63d2bde84438126fc0afd0c9aa7ef
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 8ea9f3ac5cb94384bae8696ae500178e, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Prefab/Test/TestArPosing/Cube.prefab
+- Assets/Sprites/a-guide-to-qr-codes-and-how-to-scan-qr-codes-2.png
+- Assets/Sprites/QRSamples/mycode/02_03_2022_18_09_24.jpg
+Dependencies: []
