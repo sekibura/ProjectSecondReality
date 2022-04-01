@@ -17,12 +17,26 @@ public class ARCustomModelTracingView : View
     [SerializeField]
     private ARTracingManager _aRTracingManager;
 
+    [SerializeField]
+    private Button _scaleBtn;
+    [SerializeField]
+    private GameObject _scaleControl;
+    [SerializeField]
+    private Button _rotationBtn;
+    [SerializeField]
+    private GameObject _rotationControl;
+
+
+
     public override void Initialize()
     {
         _homeBtn.onClick.AddListener(()=> { ViewManager.ShowLast(); });
         _helpBtn.onClick.AddListener(()=> { ViewManager.Show<QRScannerInfoView>();});
         _toPlaceBtn.onClick.AddListener(()=> { _aRTracingManager.PlaceObject(); });
         _toRemoveBtn.onClick.AddListener(() => { _aRTracingManager.DeleteObject(); });
+
+        _scaleBtn.onClick.AddListener(()=> { _scaleControl.SetActive(!_scaleControl.activeSelf); });
+        _rotationBtn.onClick.AddListener(() => { _rotationControl.SetActive(!_rotationControl.activeSelf); });
     }
 
     public override void Show(object parameter)

@@ -46,6 +46,7 @@ public class ARTracingManager : MonoBehaviour
     /// The object instantiated as a result of a successful raycast intersection with a plane.
     /// </summary>
     public GameObject spawnedObject { get; private set; }
+    private Vector3 _spawnedObjectDefaultScale;
 
 
     private void Start()
@@ -92,6 +93,7 @@ public class ARTracingManager : MonoBehaviour
             {
                 //spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
                 spawnedObject = Instantiate(m_PlacedPrefab, visualObject.transform.position, visualObject.transform.rotation);
+                _spawnedObjectDefaultScale = spawnedObject.transform.localScale;
 
                 _placeButton.SetActive(false);
                 _removeBtn.SetActive(true);
@@ -122,4 +124,54 @@ public class ARTracingManager : MonoBehaviour
     {
         _toPlaceObject = true;
     }
+
+    public void SetScale(float scale)
+    {
+        //Debug.Log("Set scale = " + scale);
+        if (spawnedObject != null)
+        {
+            spawnedObject.transform.localScale = _spawnedObjectDefaultScale * scale;
+        }
+    }
+
+    public void SetRotation(float angle, Axis axis)
+    {
+        //Debug.Log("Set scale = " + scale);
+        if (spawnedObject != null)
+        {
+            switch (axis)
+            {
+                case Axis.X:
+                    spawnedObject.transform.rotation = Quaternion.Euler(angle, spawnedObject.transform.rotation.eulerAngles.y, spawnedObject.transform.rotation.eulerAngles.z);
+                    break;
+                case Axis.Y:
+                    spawnedObject.transform.rotation = Quaternion.Euler(spawnedObject.transform.rotation.eulerAngles.x, angle, spawnedObject.transform.rotation.eulerAngles.z);
+                    break;
+                case Axis.Z:
+                    spawnedObject.transform.rotation = Quaternion.Euler(spawnedObject.transform.rotation.eulerAngles.x, spawnedObject.transform.rotation.eulerAngles.y, angle);
+                    break;
+            }
+        }
+    }
+
+    public void SetRotationX(float angle)
+    {
+        SetRotation(angle, Axis.X);
+    }
+    public void SetRotationY(float angle)
+    {
+        SetRotation(angle, Axis.Y);
+    }
+    public void SetRotationZ(float angle)
+    {
+        SetRotation(angle, Axis.Z);
+    }
+
 }
+public enum Axis
+{
+    X,
+    Y,
+    Z
+}
+
