@@ -94,7 +94,15 @@ public class QRFrameCapturer : MonoBehaviour
         {
             int num = cameraManager.GetConfigurations(Allocator.Temp).Length - 1;
             cameraManager.subsystem.currentConfiguration = cameraManager.GetConfigurations(Allocator.Temp)[num]; //set max resolution
+
+            Debug.Log("Aviable resolution: ");
+            for (int i = 0; i < num+1; i++)
+            {
+                Debug.Log(cameraManager.GetConfigurations(Allocator.Temp)[i].ToString());
+            }
             _initDone = true;
+            Debug.Log("Set res:" + cameraManager.GetConfigurations(Allocator.Temp)[num]);
+            StartCoroutine(InitCameraResolution());
         }
         
 
@@ -102,10 +110,27 @@ public class QRFrameCapturer : MonoBehaviour
             ReadQR();
     }
 
+    private IEnumerator InitCameraResolution()
+    {
+        yield return new WaitForSeconds(1);
+
+        int num = cameraManager.GetConfigurations(Allocator.Temp).Length - 1;
+        cameraManager.subsystem.currentConfiguration = cameraManager.GetConfigurations(Allocator.Temp)[num]; //set max resolution
+
+        Debug.Log("Aviable resolution second try: ");
+        for (int i = 0; i < num + 1; i++)
+        {
+            Debug.Log(cameraManager.GetConfigurations(Allocator.Temp)[i].ToString());
+        }
+        _initDone = true;
+
+        Debug.Log("Set res:" + cameraManager.GetConfigurations(Allocator.Temp)[num]);
+    }
+
      void ReadQR()
      {
 
-        if ((Time.frameCount % 15) != 0)
+        if ((Time.frameCount % 5) != 0)
             return;
 
          //You can set this number based on the frequency to scan the QRCode

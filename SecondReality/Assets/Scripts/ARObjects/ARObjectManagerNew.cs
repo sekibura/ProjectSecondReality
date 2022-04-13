@@ -124,4 +124,6 @@ public class ARObjectManagerNew : MonoBehaviour
         };
         return writer.Write(text);
     }
+
+   
 }

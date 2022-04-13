@@ -40,6 +40,7 @@ public class TrackedImageRuntimeManager : MonoBehaviour
         trackImageManager.trackedImagesChanged += OnTrackedImagesChanged;
 
         QRStateManager.Instance.captureStart += OnCaptureStart;
+        
     }
 
 
@@ -122,11 +123,13 @@ public class TrackedImageRuntimeManager : MonoBehaviour
         //на запуск режима сканирования qr кодов - остановить трекинг и убрать объект
         trackImageManager.enabled = false;
 
-        var trackedImagePrefab = trackImageManager.trackedImagePrefab;
+        //var trackedImagePrefab = trackImageManager.trackedImagePrefab;
+        var trackedImagePrefab = FindObjectOfType<MarkARObject>();
         if (trackedImagePrefab != null)
         {
-            trackedImagePrefab.SetActive(false);
-            Destroy(trackedImagePrefab);
+            trackedImagePrefab.gameObject.SetActive(false);
+            //Destroy(trackedImagePrefab);
         }
     }
+
 }

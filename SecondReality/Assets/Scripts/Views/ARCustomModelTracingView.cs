@@ -31,12 +31,20 @@ public class ARCustomModelTracingView : View
     public override void Initialize()
     {
         _homeBtn.onClick.AddListener(()=> { ViewManager.ShowLast(); });
-        _helpBtn.onClick.AddListener(()=> { ViewManager.Show<QRScannerInfoView>();});
+        _helpBtn.onClick.AddListener(()=> { ViewManager.Show<RayCastingInfoView>();});
         _toPlaceBtn.onClick.AddListener(()=> { _aRTracingManager.PlaceObject(); });
         _toRemoveBtn.onClick.AddListener(() => { _aRTracingManager.DeleteObject(); });
 
-        _scaleBtn.onClick.AddListener(()=> { _scaleControl.SetActive(!_scaleControl.activeSelf); });
-        _rotationBtn.onClick.AddListener(() => { _rotationControl.SetActive(!_rotationControl.activeSelf); });
+        _scaleBtn.onClick.AddListener(()=> 
+        { 
+            _scaleControl.SetActive(!_scaleControl.activeSelf);
+            _rotationControl.SetActive(false);
+        });
+        _rotationBtn.onClick.AddListener(() => 
+        { 
+            _rotationControl.SetActive(!_rotationControl.activeSelf);
+            _scaleControl.SetActive(false);
+        });
     }
 
     public override void Show(object parameter)

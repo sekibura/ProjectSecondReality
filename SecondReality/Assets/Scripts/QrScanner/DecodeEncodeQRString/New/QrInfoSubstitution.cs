@@ -15,7 +15,7 @@ public class QrInfoSubstitution
     //public Vector3 Offset;
     //public Vector3 Dimensions;
 
-    public override string ToString()
+    public override string ToString() 
     {
         return "url: " + url + "\nID:" + ID;
     }

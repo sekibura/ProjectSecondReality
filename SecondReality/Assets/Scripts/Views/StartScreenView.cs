@@ -7,7 +7,10 @@ public class StartScreenView : View
     [SerializeField]
     private CanvasGroup _fadeOut;
     public override void Initialize()
-    {}
+    {
+        Application.targetFrameRate = 360;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    }
 
     public override void Show(object parameter = null)
     {

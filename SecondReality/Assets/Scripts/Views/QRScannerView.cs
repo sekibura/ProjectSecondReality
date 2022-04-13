@@ -13,11 +13,12 @@ public class QRScannerView : View
     {
         _homeBtn.onClick.AddListener(() => ViewManager.ShowLast());
         _infoBtn.onClick.AddListener(() => ViewManager.Show<QRScannerInfoView>());
-
     }
 
     public override void Show(object parameter = null)
     {
         base.Show();
+        //QRStateManager.Instance.CaptureStart();
     }
+
 }

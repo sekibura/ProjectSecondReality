@@ -14,6 +14,6 @@ public class QRView : View
     public override void Show(object parameter = null)
     {
         base.Show();
-        Application.targetFrameRate = 360;
+        //Application.targetFrameRate = 360;
     }
 }

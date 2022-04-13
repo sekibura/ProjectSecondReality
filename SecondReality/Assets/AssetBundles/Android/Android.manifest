@@ -1,19 +1,16 @@
 ManifestFileVersion: 0
-CRC: 2888959886
+CRC: 4274408526
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: 1
+      Name: cube___
       Dependencies: {}
     Info_1:
-      Name: test/1
+      Name: sphere1
       Dependencies: {}
     Info_2:
-      Name: test/2
+      Name: cubewithdefalutanimation
       Dependencies: {}
     Info_3:
-      Name: cubebundle
-      Dependencies: {}
-    Info_4:
-      Name: spherebundle
+      Name: newbundle1
       Dependencies: {}

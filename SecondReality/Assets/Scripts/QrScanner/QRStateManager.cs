@@ -9,6 +9,7 @@ public class QRStateManager : MonoBehaviour
     public event Action captureStart;
     public event Action capturePause;
     public event Action QRCodeReadSuccess;
+    public event Action OnCloseWindow;
 
     private void Awake()
     {
@@ -17,11 +18,13 @@ public class QRStateManager : MonoBehaviour
 
     public void CaptureStart()
     {
+        Debug.Log("Capture start");
         captureStart?.Invoke();
     }
 
     public void CapturePause()
     {
+        Debug.Log("Capture pause");
         capturePause?.Invoke();
     }
 
@@ -30,5 +33,8 @@ public class QRStateManager : MonoBehaviour
         QRCodeReadSuccess?.Invoke();
     }
 
-
+    public void CloseWindow()
+    {
+        OnCloseWindow?.Invoke();
+    }
 }
