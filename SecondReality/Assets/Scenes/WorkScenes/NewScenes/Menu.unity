@@ -1609,7 +1609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 60118819}
   m_Layer: 5
-  m_Name: Back
+  m_Name: ButtonBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1648,7 +1648,7 @@ GameObject:
   - component: {fileID: 61434357}
   - component: {fileID: 61434356}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonAboutPrBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3106,7 +3106,7 @@ GameObject:
   - component: {fileID: 138897362}
   - component: {fileID: 138897363}
   m_Layer: 5
-  m_Name: Setting
+  m_Name: SettingsView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4822,7 +4822,7 @@ GameObject:
   - component: {fileID: 238444766}
   - component: {fileID: 238444765}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: ButtonLMAboutProgramm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9686,7 +9686,7 @@ GameObject:
   - component: {fileID: 496942120}
   - component: {fileID: 496942119}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonStartQRScanner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12601,7 +12601,7 @@ GameObject:
   - component: {fileID: 671195011}
   - component: {fileID: 671195010}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13409,7 +13409,7 @@ GameObject:
   - component: {fileID: 725801876}
   - component: {fileID: 725801875}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonLeftMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17393,7 +17393,7 @@ GameObject:
   - component: {fileID: 1014297704}
   - component: {fileID: 1014297703}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonQR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17817,7 +17817,7 @@ GameObject:
   - component: {fileID: 1046626372}
   - component: {fileID: 1046626371}
   m_Layer: 5
-  m_Name: Button
+  m_Name: ButtonSettingsBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19730,7 +19730,7 @@ GameObject:
   - component: {fileID: 1167624322}
   - component: {fileID: 1167624321}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: ButtonLMSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22954,7 +22954,7 @@ GameObject:
   - component: {fileID: 1339280717}
   - component: {fileID: 1339280718}
   m_Layer: 5
-  m_Name: AboutUs
+  m_Name: AboutUsView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35596,7 +35596,7 @@ GameObject:
   - component: {fileID: 2120849383}
   - component: {fileID: 2120849384}
   m_Layer: 5
-  m_Name: QRScanner
+  m_Name: QRScannerView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

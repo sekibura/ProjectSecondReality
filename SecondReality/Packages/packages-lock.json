@@ -94,6 +94,12 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.package-manager-ui": {
+      "version": "2.2.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
     "com.unity.scriptablebuildpipeline": {
       "version": "1.15.2",
       "depth": 1,
