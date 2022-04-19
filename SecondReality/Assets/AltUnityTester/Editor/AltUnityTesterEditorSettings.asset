@@ -23,7 +23,7 @@ MonoBehaviour:
     _isSuite: 1
     _parentName: 
     _testCaseCount: 9
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
     _testDuration: 0
@@ -31,11 +31,11 @@ MonoBehaviour:
     _testSelectedCount: 0
   - _selected: 0
     _testName: TestUIMainMenu
-    _status: 1
+    _status: 0
     _isSuite: 1
     _parentName: D:/3d_dev/Unity/ProjectSecondReality/SecondReality/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll
     _testCaseCount: 9
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
     _testDuration: 0
@@ -43,110 +43,110 @@ MonoBehaviour:
     _testSelectedCount: 0
   - _selected: 0
     _testName: TestUIMainMenu.TestAboutProgrammButtonClose
-    _status: 1
+    _status: 0
     _isSuite: 0
     _parentName: TestUIMainMenu
     _testCaseCount: 1
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 1.0177073
+    _testDuration: 0
     path: Assets/Editor/Tests/TestUIMainMenu.cs
     _testSelectedCount: 0
   - _selected: 0
     _testName: TestUIMainMenu.TestAboutProgrammButtonOpen
-    _status: 1
+    _status: 0
     _isSuite: 0
     _parentName: TestUIMainMenu
     _testCaseCount: 1
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.8013267
+    _testDuration: 0
     path: Assets/Editor/Tests/TestUIMainMenu.cs
     _testSelectedCount: 0
   - _selected: 0
     _testName: TestUIMainMenu.TestLeftMenuButtonClose
-    _status: 1
+    _status: 0
     _isSuite: 0
     _parentName: TestUIMainMenu
     _testCaseCount: 1
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 3.7348362
+    _testDuration: 0
     path: Assets/Editor/Tests/TestUIMainMenu.cs
     _testSelectedCount: 0
   - _selected: 0
     _testName: TestUIMainMenu.TestLeftMenuButtonOpen
-    _status: 1
+    _status: 0
     _isSuite: 0
     _parentName: TestUIMainMenu
     _testCaseCount: 1
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.6716313
+    _testDuration: 0
     path: Assets/Editor/Tests/TestUIMainMenu.cs
     _testSelectedCount: 0
   - _selected: 0
     _testName: TestUIMainMenu.TestMenuButton
-    _status: 1
+    _status: 0
     _isSuite: 0
     _parentName: TestUIMainMenu
     _testCaseCount: 1
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.561056
+    _testDuration: 0
     path: Assets/Editor/Tests/TestUIMainMenu.cs
     _testSelectedCount: 0
   - _selected: 0
     _testName: TestUIMainMenu.TestQRMenuButton
-    _status: 1
+    _status: 0
     _isSuite: 0
     _parentName: TestUIMainMenu
     _testCaseCount: 1
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.6443765
+    _testDuration: 0
     path: Assets/Editor/Tests/TestUIMainMenu.cs
     _testSelectedCount: 0
   - _selected: 0
     _testName: TestUIMainMenu.TestQRScannerOpen
-    _status: 1
+    _status: 0
     _isSuite: 0
     _parentName: TestUIMainMenu
     _testCaseCount: 1
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 4.0325181
+    _testDuration: 0
     path: Assets/Editor/Tests/TestUIMainMenu.cs
     _testSelectedCount: 0
   - _selected: 0
     _testName: TestUIMainMenu.TestSettingsButtonClose
-    _status: 1
+    _status: 0
     _isSuite: 0
     _parentName: TestUIMainMenu
     _testCaseCount: 1
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.8653356
+    _testDuration: 0
     path: Assets/Editor/Tests/TestUIMainMenu.cs
     _testSelectedCount: 0
   - _selected: 0
     _testName: TestUIMainMenu.TestSettingsButtonOpen
-    _status: 1
+    _status: 0
     _isSuite: 0
     _parentName: TestUIMainMenu
     _testCaseCount: 1
-    _foldOut: 1
+    _foldOut: 0
     _testResultMessage: 
     _testStackTrace: 
-    _testDuration: 0.7383114
+    _testDuration: 0
     path: Assets/Editor/Tests/TestUIMainMenu.cs
     _testSelectedCount: 0
   - _selected: 1
@@ -179,7 +179,7 @@ MonoBehaviour:
     _buildIndex: 0
   platform: 1
   StandaloneTarget: 5
-  RanInEditor: 0
+  RanInEditor: 1
   ScenePathDisplayed: 0
   InputVisualizer: 0
   ShowPopUp: 1
