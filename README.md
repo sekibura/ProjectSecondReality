@@ -26,10 +26,9 @@ Project Second Reality - андройд приложение для взаимо
 
 ## Screenshots
 
-[<img src="/readme/Wallabag%20Reading%20List.png" align="left"
-width="200"
-    hspace="10" vspace="10">](/readme/Wallabag%20Reading%20List.png)
-[<img src="/readme/Wallabag%20Article%20View.png" align="center"
-width="200"
-    hspace="10" vspace="10">](/readme/Wallabag%20Article%20View.png)
-
+[<img src="/Readme/PhoneMainScreen.png" align="left"
+width="200" hspace="10" vspace="10">](/Readme/PhoneMainScreen.png)
+[<img src="/Readme/PhoneSecondScreen.png" align="center"
+width="200"   hspace="10" vspace="10">](/Readme/PhoneSecondScreen.png)
+[<img src="/Readme/TabletSecondScreen.png" align="right"
+width="200"   hspace="10" vspace="10">](/Readme/TabletSecondScreen.png)
