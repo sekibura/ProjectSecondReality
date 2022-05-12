@@ -27,6 +27,6 @@ Project Second Reality - андройд приложение для взаимо
 ## Скриншоты
 
 [<img src="/Readme/PhoneMainScreen.png" align="left"
-width="200" hspace="10" vspace="10">](/Readme/PhoneMainScreen.png)
+width="300" hspace="10" vspace="10">](/Readme/PhoneMainScreen.png)
 [<img src="/Readme/PhoneSecondScreen.png" align="center"
-width="200"   hspace="10" vspace="10">](/Readme/PhoneSecondScreen.png)
+width="300"   hspace="10" vspace="10">](/Readme/PhoneSecondScreen.png)
