@@ -4,15 +4,20 @@
 <img src="/Readme/logo.png" align="left"
 width="150" hspace="10" vspace="10">
 
-Project Second Reality - андройд приложение для взаимодействия с контентом дополненной реальности. 
 
-Отсканируйте необходимый QR-код, загрузите необходимый контент и наслаждайтесь AR-экспириенсом.
-Отсканируйте необходимый QR-код, загрузите необходимый контент и наслаждайтесь AR-экспириенсом.Отсканируйте необходимый QR-код, загрузите необходимый контент и наслаждайтесь AR-экспириенсом.Отсканируйте необходимый QR-код, загрузите необходимый контент и наслаждайтесь AR-экспириенсом.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
 
 
 ## О приложении
 Project Second Reality - андройд приложение для взаимодействия с контентом дополненной реальности. 
+
+<br>
+
+<br>
+
+<br>
+
 
 
 ## Особенности
@@ -30,3 +35,9 @@ Project Second Reality - андройд приложение для взаимо
 width="300" hspace="10" vspace="10">](/Readme/PhoneMainScreen.png)
 [<img src="/Readme/PhoneSecondScreen.png" align="center"
 width="300"   hspace="10" vspace="10">](/Readme/PhoneSecondScreen.png)
+
+[<img src="/Readme/PhoneMainScreen.png" align="left"
+width="300" hspace="10" vspace="10">](/Readme/anim1.gif)
+[<img src="/Readme/PhoneSecondScreen.png" align="center"
+width="300"   hspace="10" vspace="10">](/Readme/anim2.gif)
+
