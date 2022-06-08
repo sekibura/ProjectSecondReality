@@ -36,8 +36,9 @@ width="300" hspace="10" vspace="10">](/Readme/PhoneMainScreen.png)
 [<img src="/Readme/PhoneSecondScreen.png" align="center"
 width="300"   hspace="10" vspace="10">](/Readme/PhoneSecondScreen.png)
 
-[<img src="/Readme/PhoneMainScreen.png" align="left"
+[<img src="/Readme/anim1.gif" align="left"
 width="300" hspace="10" vspace="10">](/Readme/anim1.gif)
-[<img src="/Readme/PhoneSecondScreen.png" align="center"
+
+[<img src="/Readme/anim2.gif" align="center"
 width="300"   hspace="10" vspace="10">](/Readme/anim2.gif)
 
